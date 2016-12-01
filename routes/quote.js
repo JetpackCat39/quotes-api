@@ -45,7 +45,7 @@ router.get('/', function(req, res) {
             res.send(docs);
         });
         
-        var input = fs.createReadStream('lines.txt');
+        var input = fs.createReadStream('quotes.txt');
         var arr = readLines(input, func);
         
         for(int i = 0; i < arr.length; i ++) {
