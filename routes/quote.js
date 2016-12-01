@@ -8,7 +8,13 @@ var url = 'mongodb://heroku_hwn3xb29:d2l1apo2soe77k7ekhs46r94rn@ds159507.mlab.co
 router.get('/', function(req, res) {
     MongoClient.connect(url, function(err, db) {
         assert.equal(null, err);
-        res.send(db.quotes.find());
+
+        var col = db.collection("quotes");
+
+        col.find({}).toArray(function(err, docs) {
+            assert.equal(err, null);
+            res.send(docs);
+        });
 
         db.close();
     });
