@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
 
         col.find({}).toArray(function(err, docs) {
             assert.equal(err, null);
-            res.send(docs);
+            res.send(docs[0]);
         });
 
         db.close();
