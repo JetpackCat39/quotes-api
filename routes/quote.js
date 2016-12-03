@@ -11,9 +11,9 @@ router.get('/', function(req, res) {
 
         var col = db.collection("quotes");
 
-        var arr = col.find({}).toArray(function(err, docs) {
+        col.find({}).toArray(function(err, docs) {
             assert.equal(err, null);
-            res.send(arr[0]);
+            res.send(docs);
         });
             
         db.close();
