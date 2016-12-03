@@ -19,7 +19,8 @@ router.get('/', function(req, res) {
                     console.log("couldn't query collection");
                     console.log(err)
                 } else {
-                    res.send(docs);
+                    var random = Math.floor(Math.random() * (docs.length - 1));
+                    res.send(docs[random].content);
                 }
 
                 db.close();
