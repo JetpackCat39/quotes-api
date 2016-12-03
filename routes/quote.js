@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-// var fs = require('fs');
 
 var MongoClient = require('mongodb').MongoClient, assert = require('assert');
 
@@ -12,18 +11,13 @@ router.get('/', function(req, res) {
 
         var col = db.collection("quotes");
 
-        col.find({}).toArray(function(err, docs) {
+        var arr = col.find({}).toArray(function(err, docs) {
             assert.equal(err, null);
-            res.send(docs[0]);
+            res.send(arr[0]);
         });
             
         db.close();
     });
-    
-    var input = fs.createReadStream('lines.txt');
-    readLines(input, func);
-    
-    
 });
 
 module.exports = router;
