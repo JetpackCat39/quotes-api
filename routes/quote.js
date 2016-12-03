@@ -10,15 +10,14 @@ router.get('/', function(req, res) {
         if (err) {
             console.log('Unable to connect to the mongoDB server. Error:', err);
         } else {
-            //HURRAY!! We are connected. :)
             console.log('Connection established to', url);
 
-            // var col = db.collection("quotes");
-            //
-            // col.find({}).toArray(function(err, docs) {
-            //     assert.equal(err, null);
-            //     res.send(docs);
-            // });
+            var col = db.collection("quotes");
+
+            col.find({}).toArray(function(err, docs) {
+                assert.equal(err, null);
+                res.send(docs);
+            });
 
             db.close();
         }
