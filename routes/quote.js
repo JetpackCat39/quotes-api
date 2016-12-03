@@ -15,8 +15,11 @@ router.get('/', function(req, res) {
             var col = db.collection("quotes");
 
             col.find({}).toArray(function(err, docs) {
-                assert.equal(err, null);
-                res.send(docs);
+                if(err) {
+                    console.log("couldn't query collection")
+                } else {
+                    res.send(docs);
+                }
             });
 
             db.close();
