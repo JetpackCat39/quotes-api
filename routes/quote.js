@@ -16,7 +16,8 @@ router.get('/', function(req, res) {
 
             col.find({}).toArray(function(err, docs) {
                 if(err) {
-                    console.log("couldn't query collection")
+                    console.log("couldn't query collection");
+                    console.log(err)
                 } else {
                     res.send(docs);
                 }
